@@ -10,8 +10,8 @@
 <script>
 // initialize client with app credentials
 SC.initialize({
-  client_id: 'YOUR_CLIENT_ID',
-  redirect_uri: 'REDIRECT_URL'
+  client_id: ENV['client_id'],
+  redirect_uri: 'http://localhost:9393/'
 });
 
 // initiate auth popup
