@@ -3,7 +3,7 @@ class CreateSongs < ActiveRecord::Migration
     create_table :songs do |t|
       t.string :name
       t.string :artist
-      t.string :sc_id            # Soundcloud ID -- might be integer and not string????
+      t.integer :track_id
       t.belongs_to :playlist
 
       t.timestamps null: false

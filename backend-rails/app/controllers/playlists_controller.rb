@@ -1,36 +1,29 @@
 class PlaylistsController < ApplicationController
-Dotenv.load
+  Dotenv.load
+
   def index
 
   end
 
   def new
-        client=SoundCloud.new({
+      client=SoundCloud.new({
       :client_id => ENV['client_id'],
       :client_secret => ENV['client_secret'],
       :username => ENV['username'],
       :password => ENV['password']
-    })
-      @songs = client.get('/tracks', :q => params[:search])
-      #lilwaynewouldbedynamic params
-      # <p>ID <%= @songs.id %> </p>
-      # <p> Genre <%= @songs.genre %></p>
-      # <p> Title <%= @songs.title %></p>
-
+      })
+      @songs = client.get('/tracks', :q => params[:search], :limit => 10)
+      @songs.each do |song|
+        p song.uri
+        p song.stream_url
+        p song.id
+        p "*" * 80
+      end
   end
 
+
+  ###test code not implemented yet
   # def create
-  #   client=SoundCloud.new({
-  #     :client_id => ENV['client_id'],
-  #     :client_secret => ENV['client_secret'],
-  #     :username => ENV['username'],
-  #     :password => ENV['password']
-  #   })
-  #     @songs = client.get('/tracks', :q => params[:search])
-  #     # p @songs
-  #     @songs.each do |song|
-  #       p song.title
-  #     end
   #     # redirect_to new_playlist_path(@songs)
   #     redirect_to new_playlist_path
   #     # redirect_to new_playlist_path({:music => @songs})
@@ -47,6 +40,7 @@ Dotenv.load
   #   #           :tracks => tracks
   #   # })
   # end
+  ##test code end
 
 
 
