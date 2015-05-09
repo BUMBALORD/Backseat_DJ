@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
 
   # skip_before_filter :verify_authenticity_token   # this may not be necessary
 
@@ -24,5 +24,6 @@ class ApplicationController < ActionController::API
     end
   end
 
-########################################
 end
+
+

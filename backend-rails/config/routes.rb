@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'playlists#index'
     # get '/playlists' do
     # end
+
     get '/callback' => 'playlists#auth'
 
     resources :playlists do
