@@ -51,13 +51,13 @@ class PlaylistsController < ApplicationController
       :password => ENV['password']
       })
       @songs = client.get('/tracks', :q => params[:search], :limit => 10)
-
-      @songs.each do |song|
-        p song.uri
-        p song.stream_url
-        p song.id
-        p "*" * 80
-      end
+      render json: @songs
+      # @songs.each do |song|
+        # p song.uri
+        # p song.stream_url
+        # p song.id
+        # p "*" * 80
+      # end
   end
 end
 
