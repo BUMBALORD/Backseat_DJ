@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   root 'playlists#index'
     # get '/playlists' do
     # end
-    resources :playlists do
-    end
+    resources :playlists
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
