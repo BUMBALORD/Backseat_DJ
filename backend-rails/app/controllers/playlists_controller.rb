@@ -52,27 +52,41 @@ class PlaylistsController < ApplicationController
       })
       @songs = client.get('/tracks', :q => params[:search], :limit => 10)
 
-      @songs.each do |song|
-        p song.uri
-        p song.stream_url
-        p song.id
-        p "*" * 80
-      end
+      render json: @songs
+      # @songs.each do |song|
+        # p song.uri
+        # p song.stream_url
+        # p song.id
+        # p "*" * 80
+      # end
+
+
+
+
   end
-end
 
 
   ###test code not implemented yet
-  # def create
+
+
+  def create
+  # p params[:track_id]
+
+
+   @song = Song.new(track_id: params[:track_id].to_i)
+
+   render json: @song
+
   # client.post('/playlists', :playlist => {
   #           :title => 'My new album',
   #           :sharing => 'public',
   #           :tracks => tracks
   # })
-  # end
+  end
 
   #   # tracks will take song id params to populate array used make a new playlist
   #   # ###create an array of track_id's BEFORE creating playlist
   #   #     tracks = [21778201, 22448500, 21922889].map {|id| {:id => id}}
   #   #
   ##test code end
+end

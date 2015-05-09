@@ -9,12 +9,14 @@ Rails.application.routes.draw do
 
     get '/callback' => 'users#auth'
 
+
     resources :users do
       resources :playlists do
         resources :songs do
         end
       end
     end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
