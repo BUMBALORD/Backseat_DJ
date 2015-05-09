@@ -3,13 +3,17 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'playlists#index'
+  root 'users#index'
     # get '/playlists' do
     # end
 
-    get '/callback' => 'playlists#auth'
+    get '/callback' => 'users#auth'
 
-    resources :playlists do
+    resources :users do
+      resources :playlists do
+        resources :songs do
+        end
+      end
     end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
