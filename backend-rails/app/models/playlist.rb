@@ -1,4 +1,8 @@
-class Playlist < ActiveRecord::API
+class Playlist < ActiveRecord::Base
 	belongs_to :user
 	has_many :songs, dependent: :destroy  # if playlist is deleted so are its songs
+
+  def initialize
+    track = []
+  end
 end
