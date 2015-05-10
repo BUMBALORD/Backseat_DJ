@@ -11,8 +11,5 @@ get '/users/:user_id/playlists/:id' do
   erb :"playlists/show"
 end
 
-post '/users/:user_id/playlists/:id' do
-  p params
-  erb :"playlists/show"
-end
+
 
