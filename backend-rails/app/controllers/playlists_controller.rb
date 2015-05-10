@@ -1,46 +1,4 @@
 class PlaylistsController < ApplicationController
-  Dotenv.load
-
-  def index
-      client=SoundCloud.new({
-      :client_id => ENV['client_id'],
-      :client_secret => ENV['client_secret'],
-      :username => ENV['username'],
-      :password => ENV['password'],
-      :redirect_uri  => "http://localhost:3000/callback.html"
-    })
-    # @token = client.options.access_token
-    # @rudown = HTTparty.get('http://connect.soundcloud.com/sdk.js')
-      # @asdf = @client.get('/tracks')
-       # @asdf = @asdf[0]
-      # @bankz = []
-      # @asdf = client.get('/tracks', :q => 'young thug')
-      # @asdf.each do |xyz|
-      #   @bankz << xyz.title
-      # end
-      # render :js => @bankz.to_json
-      redirect_to client.authorize_url()
-  end
-
-  def auth
-    client = SoundCloud.new({
-      :client_id => ENV['client_id'],
-      :client_secret => ENV['client_secret'],
-      :username => ENV['username'],
-      :password => ENV['password'],
-      :redirect_uri  => "http://localhost:3000/callback.html"
-    })
-    code = params[:code]
-    access_token = client.exchange_token(:code => code)
-    p access_token
-    david = Soundcloud.new(:access_token => access_token.access_token)
-    current_user = david.get('/me')
-    # current_user = SoundCloud.new(:access_token => access_token).get('/me')
-    # puts current_user.full_name
-    # p access_token
-    # call here to sound cloud with code to get his info as another params
-    # redirect_to 'https://soundcloud.com/connect'
-  end
 
 
   def new
@@ -51,13 +9,15 @@ class PlaylistsController < ApplicationController
       :password => ENV['password']
       })
       @songs = client.get('/tracks', :q => params[:search], :limit => 10)
-      render json: @songs
+
+      # render json: @songs
       # @songs.each do |song|
         # p song.uri
         # p song.stream_url
         # p song.id
         # p "*" * 80
       # end
+
   end
 
 
@@ -66,20 +26,18 @@ class PlaylistsController < ApplicationController
 
   def create
   # p params[:track_id]
+    p params
+    @user = User.find(params[:user_id])
+    # @playlist = @user.playlists.create(name: params[:playlist_name])
+    @playlist = Playlist.create(name: params[:playlist_name], user_id:params[:user_id])
+    ##ACTUAL playlist would exist already from the user instances
+  ###@song = @user.playlists.find(1).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
+  render json: @playlist
 
-  @user = User.find(1)
-  # @user = User.find(params[:id]) ###ACTUAL (1) is DUMMY
-  # @user.playlists.create(name: params[:whateverispassed]) ##ACTUAL playlist would exist already from the user instances
-  @song = @user.playlists.find(1).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
    # @song = Song.new(track_id: params[:track_id].to_i)
-
-   render json: @song
-
-  # client.post('/playlists', :playlist => {
-  #           :title => 'My new album',
-  #           :sharing => 'public',
-  #           :tracks => tracks
-  # })
+   # render json: @playlist
+   # redirect_to
+   # render json: @song
   end
 
   def show

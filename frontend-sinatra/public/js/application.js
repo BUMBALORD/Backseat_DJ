@@ -1,9 +1,16 @@
 $(document).ready(function() {
+  $('#new-user').on('submit', function(){
+    $.ajax({
+      url: $(this).attr('action'),
+      method: 'POST',
+      data: $(this).serialize()
+    })
+  })
 
-  $('.current')
 
 
   $('.search_bar').on("submit", function(event){
+    debugger
     $('.playlist').text("Playlist:")
     event.preventDefault();
     $.ajax({
@@ -48,6 +55,31 @@ $(document).ready(function() {
 
   })  // search bar
 
+    // $('.playlist_create').on("submit", function(event){
+    //       event.preventDefault();
+    //       debugger
+    //       var name = $(this).find('input').attr('name')
+    //       // var play_name = playlist.text()
+
+    //       $.ajax({
+    //         url: $(this).attr('action'),
+    //         method:"POST",
+    //         data: $(this).serialize(),
+    //         dataType:"json"
+    //       }).done(function(response){
+    //         debugger
+    //         console.log("yeah")
+    //       })
+    // })
+
+
+
+
 });  // document
+
+
+
+
+
 
 
