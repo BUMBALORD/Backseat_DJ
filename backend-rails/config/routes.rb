@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
     resources :users do
       resources :playlists do
+        member do
+          get 'play', to:'playlists#play'
+          end
         resources :songs do
         end
       end

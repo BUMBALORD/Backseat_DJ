@@ -1,4 +1,12 @@
 $(document).ready(function() {
+
+  $('.playlist-index').ready(function(){
+    $.ajax({
+      url: "http://localhost:3000/users/:user_id/playlists",
+      method: "get",
+      data:
+    })
+  })
   $('#new-user').on('submit', function(){
     $.ajax({
       url: $(this).attr('action'),
