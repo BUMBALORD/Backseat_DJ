@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('#new-user').on('submit', function(){
-    debugger
+    // debugger
     $.ajax({
       url: $(this).attr('action'),
       method: 'POST',
