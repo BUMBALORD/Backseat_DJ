@@ -1,20 +1,20 @@
 get '/' do
-  erb :index
+  erb :"users/index"
 end
 
 get '/callback.html' do
   p params
-  erb :callback
+  erb :"users/callback"
 end
 
 get '/users' do
-  erb :users
+  erb :"users/users"
 end
 
 get '/users/new' do
-  erb :new
+  erb :"users/new"
 end
 
 get '/users/:user_id/playlists' do
-  erb :playlist
+  erb :"users/playlist"
 end
