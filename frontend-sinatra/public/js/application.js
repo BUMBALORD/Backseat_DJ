@@ -1,12 +1,47 @@
 $(document).ready(function() {
 
-  $('.playlist-index').ready(function(){
+  $('.playlist-create').on('submit', function(event){
+    event.preventDefault()
+    var poo = "http://localhost:3000" + window.location.pathname
     $.ajax({
-      url: "http://localhost:3000/users/:user_id/playlists",
-      method: "get",
-      data:
+      url: poo,
+      method: 'post',
+      dataType: 'json',
+      data: $(this).serialize()
     })
+    .done(function(response){
+    console.log("yes")
+
+    var car = $('.testes').last().clone()
+    var bar = $(car).html("<a href=/user/"+ response.user_id+ "/playlists/" +response.id +">Name: " + response.name + ", Genre: " + response.genre+ "</a>")
+    debugger
+    var jar =
+    $('.testes').last().append(bar)
+    })
+
   })
+
+  $('.playlist-index').ready(function(){
+    var poo = "http://localhost:3000" + window.location.pathname
+    $.ajax({
+      url: poo,
+      method: "get",
+      dataType: 'json'
+    })
+    .done(function(response){
+
+      $('h1').text( response.user.user_name + "'s Playlist ")
+
+      for (var i = 0; i < response.data.length; i++) {
+      var car = $('.testes').last().clone();
+      var bar = $(car).html("<a href=/user/"+ response.data[i].user_id+ "/playlists/" +response.data[i].id +">Name: " + response.data[i].name + ", Genre: " + response.data[i].genre+ "</a>")
+      $('.testes').last().append(bar)
+    }
+    })
+
+  })
+
+
   $('#new-user').on('submit', function(){
     $.ajax({
       url: $(this).attr('action'),

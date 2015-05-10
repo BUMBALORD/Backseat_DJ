@@ -26,13 +26,17 @@ class PlaylistsController < ApplicationController
 
   def create
   # p params[:track_id]
+  p "*" * 80
     p params
     @user = User.find(params[:user_id])
     # @playlist = @user.playlists.create(name: params[:playlist_name])
-    @playlist = Playlist.create(name: params[:playlist_name], user_id:params[:user_id])
+    @playlist = Playlist.create(name: params[:name], genre: params[:genre], user_id:params[:user_id])
+  #   playlist = @user.playlists.create(name: params[:name], genre: parmas[:genre], user_id: params[:user_id])
+  p "*" * 80
+    p @playlist
     ##ACTUAL playlist would exist already from the user instances
   ###@song = @user.playlists.find(1).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
-  render json: @playlist
+  render :json => @playlist
 
    # @song = Song.new(track_id: params[:track_id].to_i)
    # render json: @playlist
@@ -54,6 +58,8 @@ class PlaylistsController < ApplicationController
 
   def index
     p params
-    # @user = User.find(params)
+    @user = User.find(params[:user_id])
+    fart = @user.playlists
+    render :json => {user: @user, data: fart}
   end
 end
