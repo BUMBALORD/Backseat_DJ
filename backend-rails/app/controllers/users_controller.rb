@@ -10,6 +10,8 @@ class UsersController < ApplicationController
       :password => ENV['password'],
       :redirect_uri  => "http://localhost:3000/callback.html"
     })
+
+
     # @token = client.options.access_token
     # @rudown = HTTparty.get('http://connect.soundcloud.com/sdk.js')
       # @asdf = @client.get('/tracks')
@@ -41,7 +43,13 @@ class UsersController < ApplicationController
     # p access_token
     # call here to sound cloud with code to get his info as another params
     # @user = User.find(params[:user_id])
-    redirect_to 'http://localhost:9393/users/1/playlists'
+    # render json: {id: 1}
+    redirect_to 'http://localhost:3000/id'
+    # redirect_to 'http://localhost:9393/users/1/playlists'
+  end
+
+  def id
+    render json: {id: 1}
   end
 
   def create

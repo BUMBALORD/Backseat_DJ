@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     # end
 
     get '/callback' => 'users#auth'
+    get '/id' => 'users#id'
 
 
     resources :users do

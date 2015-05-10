@@ -10,7 +10,7 @@ class PlaylistsController < ApplicationController
       })
       @songs = client.get('/tracks', :q => params[:search], :limit => 10)
 
-      render json: @songs
+      render json: {songs: @songs}
       # @songs.each do |song|
         # p song.uri
         # p song.stream_url
