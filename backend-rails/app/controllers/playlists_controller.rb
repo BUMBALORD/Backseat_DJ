@@ -51,4 +51,9 @@ class PlaylistsController < ApplicationController
   #   #     tracks = [21778201, 22448500, 21922889].map {|id| {:id => id}}
   #   #
   ##test code end
+
+  def index
+    p params
+    # @user = User.find(params)
+  end
 end
