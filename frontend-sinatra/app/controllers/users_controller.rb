@@ -15,8 +15,8 @@ get '/users/new' do
   erb :"users/new"
 end
 
-get '/users/:user_id/playlists' do
-  p params
-  @user = params[:user_id]
-  erb :"playlists/new"
-end
+# get '/users/:user_id/playlists' do
+#   p params
+#   @user = params[:user_id]
+#   erb :"playlists/new"
+# end
