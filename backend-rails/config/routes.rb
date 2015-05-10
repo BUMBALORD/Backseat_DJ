@@ -16,6 +16,12 @@ Rails.application.routes.draw do
           get 'play', to:'playlists#play'
           end
         resources :songs do
+          member do
+            put 'upskip'
+            put 'downskip'
+            put 'upreplay'
+            put 'downreplay'
+          end
         end
       end
     end
