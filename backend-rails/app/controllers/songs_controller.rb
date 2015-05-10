@@ -1,9 +1,14 @@
 class SongsController < ApplicationController
 
+  def show
+
+  end
+
   def upskip
     song = Song.where(id: params[:id]).first
     song.skip += 1
     song.save
+    p song.skip
     render json: {id: song.id, skip: song.skip}
   end
 
