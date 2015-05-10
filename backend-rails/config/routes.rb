@@ -15,11 +15,17 @@ Rails.application.routes.draw do
         member do
           get 'play', to:'playlists#play'
           end
-        resources :songs do
-        end
       end
     end
 
+    resources :songs do
+          member do
+            get 'upskip'
+            get 'downskip'
+            get 'upreplay'
+            get 'downreplay'
+          end
+        end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
