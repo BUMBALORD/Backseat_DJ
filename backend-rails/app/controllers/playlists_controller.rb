@@ -53,10 +53,19 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    @user=User.find(1)
-    @songs = @user.playlists.find(1).songs.each do |x|
+    p params
+    # @playlist=Playlist.find(params[:id])
+       @user = User.find(params[:user_id])
+  @playlist = Playlist.find(params[:id])
+    # @playlist_name = params[:name]
+
+    # @playlist = @user.playlist.find(params[:id])
+    # @playlist = @user.playlists.   where playlist(user_id = @user.id)
+    # @user=User.find(1)
+    # @songs = @user.playlists.find(1).songs.each do |x|
            # x.
-    end
+           render json: {user: @user, playlist: @playlist }
+
   end
   #   # tracks will take song id params to populate array used make a new playlist
   #   # ###create an array of track_id's BEFORE creating playlist

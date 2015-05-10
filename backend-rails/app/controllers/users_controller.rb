@@ -9,17 +9,9 @@ class UsersController < ApplicationController
       :username => ENV['username'],
       :password => ENV['password'],
       :redirect_uri  => "http://localhost:3000/callback.html"
+      # :redirect_uri => "google.com"
+
     })
-    # @token = client.options.access_token
-    # @rudown = HTTparty.get('http://connect.soundcloud.com/sdk.js')
-      # @asdf = @client.get('/tracks')
-       # @asdf = @asdf[0]
-      # @bankz = []
-      # @asdf = client.get('/tracks', :q => 'young thug')
-      # @asdf.each do |xyz|
-      #   @bankz << xyz.title
-      # end
-      # render :js => @bankz.to_json
       redirect_to client.authorize_url()
   end
 
@@ -29,25 +21,37 @@ class UsersController < ApplicationController
       :client_secret => ENV['client_secret'],
       :username => ENV['username'],
       :password => ENV['password'],
-      :redirect_uri  => "http://localhost:3000/callback.html"
+      # :redirect_uri  => "http://localhost:3000/callback.html"
+      # :redirect_uri => "/users"
     })
     code = params[:code]
     access_token = client.exchange_token(:code => code)
-    p access_token
+    # p access_token
     david = Soundcloud.new(:access_token => access_token.access_token)
     current_user = david.get('/me')
     # current_user = SoundCloud.new(:access_token => access_token).get('/me')
     # puts current_user.full_name
     # p access_token
     # call here to sound cloud with code to get his info as another params
-    # @user = User.find(params[:user_id])
-    redirect_to 'http://localhost:9393/users/1/playlists'
+    p "*" * 100
+    p params
+    p "*" * 100
+
+   #NO RENDER after HTTParty?!?!?!??!?!
+    # redirect_to "http://localhost:9393/users/1/playlists"
+  end
+
+  def new
+    # User.find(params[:id])
   end
 
   def create
     user = User.create(user_name: params[:user_name], password: params[:password])
-
-
+    p "*" * 100
+    p params
+    p user
+    p "*" * 100
+    # render json: user
     redirect_to root_path
   end
 

@@ -1,3 +1,4 @@
+require 'httparty'
 # get '/' do
 #   # @playlist = Playlist.find(1).songs
 #       ##placeholder for params[:id]
@@ -9,13 +10,23 @@ get '/users/:user_id/playlists' do
   erb :"playlists/index"
 end
 
+
 get '/users/:user_id/playlists/:id' do
-  # @user = User.find(params[:user_id])
-  @playlist = Playlist.where(user_id:params[:user_id])
-  p @user
-  p params[:user_id]
-  # @playlist = Playlist.find(1).songs
-      ##placeholder for params[:id]
+  p params
+  @playlist_id = params[:id]
+  @user =  params[:user_id]
+
+  response = HTTParty.get("http://localhost:3000/users/#{params[:user_id]}/playlists")
+  p "*" * 100
+  p response.parsed_response["data"]
+  p "*" * 100
+   response.parsed_response["data"].each do |xyz|
+    if xyz["id"].to_i == params[:id].to_i
+          p xyz
+          p "*" * 100
+    end
+  end
+
   erb :"playlists/show"
 end
 
