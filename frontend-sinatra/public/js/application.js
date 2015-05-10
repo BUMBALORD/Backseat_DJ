@@ -7,6 +7,12 @@ $(document).ready(function() {
     })
   })
 
+  $('.playlist_create').on("submit", function(event){
+        event.preventDefault();
+        debugger
+
+    })
+
 
 
   $('.search_bar').on("submit", function(event){
@@ -14,7 +20,7 @@ $(document).ready(function() {
     $('.playlist').text("Playlist:")
     event.preventDefault();
     $.ajax({
-      url: "http://localhost:3000/playlists/new",
+      url: "http://localhost:3000/users/1/playlists/1/songs/new",
       method: 'get',
       data: $(this).serialize(),
       dataType: 'json'
@@ -46,6 +52,7 @@ $(document).ready(function() {
     $('.play_songs').on("click", function(event){
         event.preventDefault();
     })
+
 
     // $('.songs').on("click", function(event){
       // console.log($(this).find('a').attr('href'))

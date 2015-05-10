@@ -3,3 +3,22 @@
   <input type="text" name="playlist_name" placeholder="Name of Playlist">
   <input type="submit">
 </form>
+
+
+<br><br><br>
+
+<form class="search_bar" action="http://localhost:3000/users/<%=@user%>/playlists/1/songs" method="GET">
+  <input type="text" name="search" placeholder= "Search artist or title">
+  <input type="submit">
+</form>
+
+<form class="play_songs" action="http://localhost:3000/users/<%=@user%>/playlists" method="GET">
+<input type="submit" >
+</form>
+
+<div class="current" style="float:right; margin:20px">Current Playlist
+
+  <p></p>
+</div>
+
+<h1 class="playlist">Playlist:</h1>

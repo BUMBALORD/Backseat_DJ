@@ -30,9 +30,13 @@ class PlaylistsController < ApplicationController
     @user = User.find(params[:user_id])
     # @playlist = @user.playlists.create(name: params[:playlist_name])
     @playlist = Playlist.create(name: params[:playlist_name], user_id:params[:user_id])
+    @playlist = @playlist.songs
+    # @playlist = Playlist.all
     ##ACTUAL playlist would exist already from the user instances
   ###@song = @user.playlists.find(1).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
   render json: @playlist
+
+
 
    # @song = Song.new(track_id: params[:track_id].to_i)
    # render json: @playlist
