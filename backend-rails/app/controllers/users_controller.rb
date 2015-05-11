@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-
- Dotenv.load
+Dotenv.load
 
  def index
       client = SoundCloud.new({

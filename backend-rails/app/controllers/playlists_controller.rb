@@ -1,24 +1,24 @@
 class PlaylistsController < ApplicationController
 
 
-  def new
-    client=SoundCloud.new({
-      :client_id => ENV['client_id'],
-      :client_secret => ENV['client_secret'],
-      :username => ENV['username'],
-      :password => ENV['password']
-      })
-      @songs = client.get('/tracks', :q => params[:search], :limit => 10)
+  # def new
+  #   client=SoundCloud.new({
+  #     :client_id => ENV['client_id'],
+  #     :client_secret => ENV['client_secret'],
+  #     :username => ENV['username'],
+  #     :password => ENV['password']
+  #     })
+  #     @songs = client.get('/tracks', :q => params[:search], :limit => 10)
 
-      # render json: @songs
-      # @songs.each do |song|
-        # p song.uri
-        # p song.stream_url
-        # p song.id
-        # p "*" * 80
-      # end
+  #     # render json: @songs
+  #     # @songs.each do |song|
+  #       # p song.uri
+  #       # p song.stream_url
+  #       # p song.id
+  #       # p "*" * 80
+  #     # end
 
-  end
+  # end
 
 
   ###test code not implemented yet
@@ -55,8 +55,8 @@ class PlaylistsController < ApplicationController
   def show
     p params
     # @playlist=Playlist.find(params[:id])
-       @user = User.find(params[:user_id])
-  @playlist = Playlist.find(params[:id])
+        @user = User.find(params[:user_id])
+        @playlist = Playlist.find(params[:id])
     # @playlist_name = params[:name]
 
     # @playlist = @user.playlist.find(params[:id])
