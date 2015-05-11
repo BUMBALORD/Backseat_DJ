@@ -6,6 +6,21 @@
    //   player.api_play();
    // });
 $(document).ready(function() {
+
+      $.ajax({
+            url: "http://localhost:3000" + window.location.pathname + "/edit",
+            method: "GET",
+            dataType: 'json'
+        }).done(function(response){
+          for(var i=0;i<response.playlist.length;i++){
+
+          $('.nonajax').append("<p>"+response.playlist[i].title+"</p>");
+          };
+        })
+
+
+
+
       SC.stream("/tracks/87439426", function(sound){
         var idx = 1
           $('.macdre').on('click', function(event){
@@ -18,10 +33,7 @@ $(document).ready(function() {
                   sound.pause()
                 console.log(idx)}
               })
-
-    // stream track id 293
-
-      });
+        });
 
 
 
@@ -85,7 +97,6 @@ $(document).ready(function() {
       $('.playlist').text("Playlist:")
       event.preventDefault();
       path = $(this).attr('action')
-      debugger
       $.ajax({
         url: path,
         method: 'get',
@@ -101,12 +112,20 @@ $(document).ready(function() {
       var song = $(this)
       var track = song.attr('href')
       var track_name = song.text();
+      var abc = $('.play_songs').attr('action').length
+      var bac = window.location.pathname.length
+      var xyz = (window.location.pathname.charAt(bac - 2) + window.location.pathname.charAt(bac - 1))
+
         $.ajax({
-          url: $(this).parent().parent().parent().find('.search_bar').attr('action'),
+          url: song.parent().parent().parent().find('.search_bar').attr('action'),
           method: "POST",
           dataType: 'json',
-          data: {track_id: track, title: track_name }
+          data: {track_id: track,
+                  title: track_name,
+                  playlist_id: xyz,
+                  user_id: $('.play_songs').attr('action').charAt(abc -1) }
         }).done(function(response) {
+
           $('.current').append("<p>" + response.title + "</p>")
         })
       })
@@ -125,8 +144,9 @@ $(document).ready(function() {
 
 
 
-});  // document
 
+
+});  // document
 
 
 

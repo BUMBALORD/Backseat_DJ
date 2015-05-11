@@ -19,7 +19,14 @@ class PlaylistsController < ApplicationController
   #     # end
 
   # end
-
+  def edit
+      @playlist_id = params[:id]
+      @user_id = params[:user_id]
+      @user = User.find(params[:user_id])
+      @playlist = Playlist.find(params[:id]).songs
+      p "*" * 100
+      render :json => {user: @user, playlist: @playlist}
+  end
 
   ###test code not implemented yet
 
@@ -36,8 +43,8 @@ class PlaylistsController < ApplicationController
     # @playlist = Playlist.all
 
     @playlist = Playlist.create(name: params[:name], genre: params[:genre], user_id:params[:user_id])
-  #   playlist = @user.playlists.create(name: params[:name], genre: parmas[:genre], user_id: params[:user_id])
-  p "*" * 80
+    #   playlist = @user.playlists.create(name: params[:name], genre: parmas[:genre], user_id: params[:user_id])
+    p "*" * 80
     p @playlist
 
     ##ACTUAL playlist would exist already from the user instances

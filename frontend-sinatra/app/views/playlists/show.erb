@@ -13,12 +13,12 @@ hjhjuhihu
 </script>
 
 
-<form class="search_bar" action="http://localhost:3000/users/<%=@user%>/playlists/<%=@playlist_id%>/songs" method="GET">
+<form class="search_bar" action="http://localhost:3000/songs" method="GET">
   <input type="text" name="search" placeholder= "Search artist or title">
   <input type="submit">
 </form>
 
-<form class="play_songs" action="http://localhost:3000/playlists/<%=@user%>" method="GET">
+<form class="play_songs" action="http://localhost:3000/users/<%=@user%>/playlists/<%=@playlist_id%>" method="GET">
 <input type="submit">
 </form>
 
@@ -28,5 +28,6 @@ hjhjuhihu
 </div>
 
 <h1 class="playlist">Playlist:</h1>
+<div class="nonajax"> </div>
 
 
