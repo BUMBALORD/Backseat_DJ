@@ -66,7 +66,14 @@ $(document).ready(function() {
         event.preventDefault();
         debugger
 
-    })
+//   $('#new-user').on('submit', function(){
+// // >>>>>>> 08ef7a8e07a66a48455e2fe19e026dca3d1b64f5
+//     $.ajax({
+//       url: $(this).attr('action'),
+//       method: 'POST',
+//       data: $(this).serialize()
+
+//     })
 
 
 
