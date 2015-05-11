@@ -15,11 +15,15 @@ Dotenv.load
   end
 
   def create
+    p params
+    p "*" * 100
   ##ACTUAL playlist would exist already from the user instances
   @user = User.find(params[:user_id])
-  @song = @user.playlists.find(params[:playlist_id]).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
+  # @song = @user.playlists.find(params[:playlist_id]).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
+  @song = Song.create!(track_id: params[:track_id],
+                       title: params[:title],
+                       playlist_id: params[:playlist_id])
   # render :json => @playlist
-
 
 
    # @song = Song.new(track_id: params[:track_id].to_i)
@@ -31,6 +35,8 @@ Dotenv.load
 
 
   def show
+    p params
+    # Playlist.where
 
   end
 
