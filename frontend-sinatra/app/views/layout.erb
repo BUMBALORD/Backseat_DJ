@@ -16,6 +16,11 @@
 
   <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script src="/js/application.js"></script>
+  <script type="text/javascript">
+   soundcloud.addEventListener('onPlayerReady', function(player, data) {
+     player.api_play();
+   });
+  </script>
 
   <title></title>
 </head>

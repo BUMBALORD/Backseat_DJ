@@ -5,7 +5,7 @@ end
 post '/users' do
   HTTParty.get("http://localhost:3000")
 
-  redirect '/users/:user_id/playlists'
+  redirect "/users/#{user_id}/playlists"
 end
 
 get '/callback.html' do
