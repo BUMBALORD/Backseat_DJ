@@ -2,6 +2,9 @@
       SC.initialize({
         client_id: 'YOUR_CLIENT_ID'
       });
+   //    soundcloud.addEventListener('onPlayerReady', function(player, data) {
+   //   player.api_play();
+   // });
 $(document).ready(function() {
       SC.stream("/tracks/87439426", function(sound){
         var idx = 1
