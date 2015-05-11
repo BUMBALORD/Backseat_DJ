@@ -1,5 +1,5 @@
-$(document).ready(function(){
-  $('.upskip').on("click", function(event){
+var buttons = function(){
+  $('.upskip').one("click", function(event){
     event.preventDefault();
     // debugger
     var path = window.location.pathname
@@ -12,7 +12,7 @@ $(document).ready(function(){
     })
   })
 
-  $('.downskip').on("click", function(event){
+  $('.downskip').one("click", function(event){
     event.preventDefault();
     // debugger
     var path = window.location.pathname
@@ -25,7 +25,7 @@ $(document).ready(function(){
     })
   })
 
-  $('.upreplay').on("click", function(event){
+  $('.upreplay').one("click", function(event){
     event.preventDefault();
     // debugger
     var path = window.location.pathname
@@ -38,7 +38,7 @@ $(document).ready(function(){
     })
   })
 
-  $('.downreplay').on("click", function(event){
+  $('.downreplay').one("click", function(event){
     event.preventDefault();
     // debugger
     var path = window.location.pathname
@@ -50,4 +50,8 @@ $(document).ready(function(){
 
     })
   })
+}
+
+$(document).ready(function(){
+buttons();
 })
